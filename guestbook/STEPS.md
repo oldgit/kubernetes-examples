@@ -12,17 +12,24 @@ source ~/.bash_profile
 ```
 
 #### Set Up
+
+##### One Redis master
+
  - kubectl create -f redis-master-controller.yaml
  - kubectl get rc
  - kubectl get pods
  - kubectl create -f redis-master-service.yaml
  - kubectl get services
 
+##### Two Redis slaves
+
  - kubectl create -f redis-slave-controller.yaml
  - kubectl get rc
  - kubectl get pods
  - kubectl create -f redis-slave-service.yaml
  - kubectl get services
+
+##### Three frontends
 
  - kubectl create -f frontend-controller.yaml
  - kubectl get rc
@@ -32,8 +39,8 @@ source ~/.bash_profile
 
 #### Query
 
- - kubectl describe pods/<pod_name>
- - kubectl logs <pod_name>
+ - kubectl describe pods/`pod_name`
+ - kubectl logs `pod_name`
 
 #### Tear Down
  - kubectl stop rc -l "name in (redis-master, redis-slave, frontend)"
