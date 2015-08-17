@@ -10,6 +10,15 @@ cd kubernetes-vagrant-coreos-cluster
 vagrant up
 source ~/.bash_profile
 ```
+#### NGINX Smoke test
+
+ - kubectl run my-nginx --image=nginx --replicas=1 --port=80
+ - kubectl get rc
+ - kubectl get pods
+ - kubectl expose rc my-nginx --port=80 --type=NodePort
+ - kubectl get -o yaml service/my-nginx | grep nodePort
+ - Get IP address of any node from: `kubectl get nodes`
+ - Open browser at http://`node-ip`:`nodePort` to see NGINX homepage
 
 #### Set Up
 
