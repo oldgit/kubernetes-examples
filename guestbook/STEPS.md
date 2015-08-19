@@ -12,13 +12,13 @@ source ~/.bash_profile
 ```
 #### NGINX Smoke test
 
- - kubectl run my-nginx --image=nginx --replicas=1 --port=80
- - kubectl get rc
- - kubectl get pods
- - kubectl expose rc my-nginx --port=80 --type=NodePort
- - kubectl get -o yaml service/my-nginx | grep nodePort
- - Get IP address of any node from: `kubectl get nodes`
- - Open browser at http://`node-ip`:`nodePort` to see NGINX homepage
+```shell
+$ kubectl run my-nginx --image=nginx --replicas=1 --port=80
+$ kubectl get rc
+$ kubectl get pods
+$ kubectl expose rc my-nginx --port=80 --public-ip=192.168.222.7
+```
+Open browser at `http://192.168.222.7` to see NGINX homepage
 
 #### Set Up
 
